@@ -2,27 +2,27 @@
 
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :profile_providers
+  has_many :profile_providers, dependent: :destroy
   has_many :providers, through: :profile_providers
   validates :name, presence: true
-  has_one_attached :photo
-  has_many :allergy_intolerances
-  has_many :care_plans
-  has_many :conditions
-  has_many :devices
-  has_many :documents
-  has_many :encounters
-  has_many :goals
-  has_many :immunizations
-  has_many :medication_administrations
-  has_many :medication_requests
-  has_many :medication_statements
-  has_many :observations
-  has_many :procedures
-  has_many :explanation_of_benefits
-  has_many :coverages
-  has_many :claims
-  has_many :operation_outcomes # internal OperationOutcomes from deconflicting resources
+  has_one_attached :photo, dependent: :destroy
+  has_many :allergy_intolerances, dependent: :destroy
+  has_many :care_plans, dependent: :destroy
+  has_many :conditions, dependent: :destroy
+  has_many :devices, dependent: :destroy
+  has_many :documents, dependent: :destroy
+  has_many :encounters, dependent: :destroy
+  has_many :goals, dependent: :destroy
+  has_many :immunizations, dependent: :destroy
+  has_many :medication_administrations, dependent: :destroy
+  has_many :medication_requests, dependent: :destroy
+  has_many :medication_statements, dependent: :destroy
+  has_many :observations, dependent: :destroy
+  has_many :procedures, dependent: :destroy
+  has_many :explanation_of_benefits, dependent: :destroy
+  has_many :coverages, dependent: :destroy
+  has_many :claims, dependent: :destroy
+  has_many :operation_outcomes, dependent: :destroy # internal OperationOutcomes from deconflicting resources
   # IMPORTANT - if adding new resource types above,
   #             also add them to the all_resources method below
 

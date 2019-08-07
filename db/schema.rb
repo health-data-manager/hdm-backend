@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_123457) do
+ActiveRecord::Schema.define(version: 2019_05_20_161135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -426,7 +426,38 @@ ActiveRecord::Schema.define(version: 2019_05_17_123457) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "allergy_intolerances", "profiles"
+  add_foreign_key "care_plans", "profiles"
+  add_foreign_key "claims", "profiles"
+  add_foreign_key "conditions", "profiles"
+  add_foreign_key "coverages", "profiles"
+  add_foreign_key "data_receipts", "profiles"
+  add_foreign_key "data_receipts", "providers"
+  add_foreign_key "devices", "profiles"
+  add_foreign_key "documents", "profiles"
+  add_foreign_key "encounters", "profiles"
+  add_foreign_key "explanation_of_benefits", "profiles"
+  add_foreign_key "goals", "profiles"
+  add_foreign_key "immunizations", "profiles"
+  add_foreign_key "medication_administrations", "profiles"
+  add_foreign_key "medication_requests", "profiles"
+  add_foreign_key "medication_statements", "profiles"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "observations", "profiles"
+  add_foreign_key "operation_outcomes", "profiles"
+  add_foreign_key "practitioners", "profiles"
+  add_foreign_key "procedures", "profiles"
+  add_foreign_key "profile_providers", "profiles"
+  add_foreign_key "profile_providers", "providers"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "provider_applications", "oauth_applications", column: "application_id"
+  add_foreign_key "provider_applications", "providers"
   add_foreign_key "providers", "providers", column: "parent_id"
+  add_foreign_key "resource_histories", "data_receipts"
+  add_foreign_key "resource_histories", "providers"
+  add_foreign_key "resource_histories", "resources"
+  add_foreign_key "resources", "data_receipts"
+  add_foreign_key "resources", "profiles"
+  add_foreign_key "resources", "providers"
 end

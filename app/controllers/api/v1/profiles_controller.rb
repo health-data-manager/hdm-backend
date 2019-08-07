@@ -40,7 +40,7 @@ module Api
 
       def destroy
         profile = find_profile
-        render json: profile, status: :ok if profile.delete
+        render json: profile, status: :ok if profile.destroy
       end
 
       private
